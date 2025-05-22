@@ -1,6 +1,18 @@
-# WebSocketDist
+# web_socket_dist
 
-**TODO: Add description**
+Erlang distribution over WebSockets.
+
+Use the `WebSocketDist.WebSocket` module with [`tcp_filter_dist`](https://github.com/otp-interop/tcp_filter_dist) to perform Erlang distribution over WebSockets.
+
+```elixir
+TCPFilter.set_socket(WebSocketDist.WebSocket)
+```
+
+You can also set this socket when starting the TCPFilter in your supervisor:
+
+```elixir
+{TCPFilter, filter: MyApp.Filter, socket: TCPFilter.SSLSocket, name: TCPFilter}
+```
 
 ## Installation
 
