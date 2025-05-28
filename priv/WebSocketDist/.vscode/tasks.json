@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Package for JS",
+            "type": "shell",
+            "command": "swift package --swift-sdk \"6.1-RELEASE-wasm32-unknown-wasi\" js --use-cdn",
+            "problemMatcher": "$swiftc"
+        }
+    ]
+}

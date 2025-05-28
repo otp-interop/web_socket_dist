@@ -1,0 +1,33 @@
+{
+  "originHash" : "040c59e1a77d4c8b6d37a7dea57aad7f93e28914b5e6d23a834037f2b30ffc54",
+  "pins" : [
+    {
+      "identity" : "javascriptkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftwasm/JavaScriptKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "589b2d2039254f4fa4ab41d6af49bc362e9d8b45"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "webapikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftwasm/WebAPIKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "51d7fc7ba0a52761c01dc90dcf186fd2a8909b5b"
+      }
+    }
+  ],
+  "version" : 3
+}
