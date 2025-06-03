@@ -1,0 +1,41 @@
+name: Publish on GitHub Packages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  package:
+    name: Package
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Set Swift Version
+        run:
+          cp priv/WebSocketDist/.swift-version .swift-version
+
+      - name: Install Swift
+        uses: ./.github/actions/install-swift
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Build
+        working-directory: priv/WebSocketDist/package
+        run: npm run build
+      
+      - run: npm ci
+        working-directory: priv/WebSocketDist/package
+      - run: npm publish
+        working-directory: priv/WebSocketDist/package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

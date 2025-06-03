@@ -1,5 +1,9 @@
 {
-  "name": "web-socket-dist",
+  "name": "@otp-interop/web-socket-dist",
+  "repository": "https://github.com/otp-interop/web_socket_dist",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
