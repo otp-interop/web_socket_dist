@@ -1,5 +1,5 @@
 {
-  "originHash" : "040c59e1a77d4c8b6d37a7dea57aad7f93e28914b5e6d23a834037f2b30ffc54",
+  "originHash" : "81dc712777089ef2dc7a254bfc87080c55d75873ba93055ee950353973a13e05",
   "pins" : [
     {
       "identity" : "javascriptkit",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "589b2d2039254f4fa4ab41d6af49bc362e9d8b45"
+      }
+    },
+    {
+      "identity" : "swift-dlmalloc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftwasm/swift-dlmalloc",
+      "state" : {
+        "branch" : "0.1.0",
+        "revision" : "0c3838252811e5cbda50c31f6f8a289b95207b17"
       }
     },
     {

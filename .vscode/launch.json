@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:web_socket_dist}/priv/WebSocketDist",
+            "name": "Debug WebSocketDist (priv/WebSocketDist)",
+            "program": "${workspaceFolder:web_socket_dist}/priv/WebSocketDist/.build/debug/WebSocketDist",
+            "preLaunchTask": "swift: Build Debug WebSocketDist (priv/WebSocketDist)"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:web_socket_dist}/priv/WebSocketDist",
+            "name": "Release WebSocketDist (priv/WebSocketDist)",
+            "program": "${workspaceFolder:web_socket_dist}/priv/WebSocketDist/.build/release/WebSocketDist",
+            "preLaunchTask": "swift: Build Release WebSocketDist (priv/WebSocketDist)"
+        }
+    ]
+}

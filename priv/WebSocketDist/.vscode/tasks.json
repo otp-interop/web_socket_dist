@@ -6,6 +6,12 @@
             "type": "shell",
             "command": "swift package --swift-sdk \"6.1-RELEASE-wasm32-unknown-wasi\" js --use-cdn",
             "problemMatcher": "$swiftc"
+        },
+        {
+            "label": "Package for JS (Swift Embedded)",
+            "type": "shell",
+            "command": "JAVASCRIPTKIT_EXPERIMENTAL_EMBEDDED_WASM=true swift package -c release --triple wasm32-unknown-none-wasm js",
+            "problemMatcher": "$swiftc"
         }
     ]
 }

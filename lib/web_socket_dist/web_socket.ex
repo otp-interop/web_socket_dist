@@ -7,7 +7,7 @@ defmodule WebSocketDist.WebSocket do
     # client
 
     def start_link(opts) do
-      GenServer.start_link(__MODULE__, opts)
+      GenServer.start_link(__MODULE__, %{ controlling_process: self(), opts: opts })
     end
 
     def accept(listen) do
@@ -28,8 +28,13 @@ defmodule WebSocketDist.WebSocket do
 
     # server
 
-    def init(opts) when is_list(opts) do
-      {:ok, bandit} = Bandit.start_link([plug: {WebSocketDist.WebSocket.Listen.WebSocketPlug, self()}] ++ opts)
+    def init(%{ controlling_process: controlling_process, opts: opts }) do
+      {:ok, bandit} = Bandit.start_link([
+        plug: {
+          WebSocketDist.WebSocket.Listen.WebSocketPlug,
+          %{ listen: self(), controlling_process: controlling_process }
+        }
+      ] ++ opts)
       {:ok, %{ bandit: bandit }}
     end
 
@@ -54,26 +59,26 @@ defmodule WebSocketDist.WebSocket do
     defmodule WebSocketPlug do
       @behaviour Plug
 
-      def init(listen) do
-        listen
+      def init(args) do
+        args
       end
 
-      def call(conn, listen) do
+      def call(conn, %{ listen: listen, controlling_process: controlling_process }) do
         peername = {conn.remote_ip, 0}
-        WebSockAdapter.upgrade(
-          conn,
-          WebSocketDist.WebSocket.Listen.WebSocketHandler, {listen, peername},
-          []
-        )
+        conn
+          |> WebSockAdapter.upgrade(
+            WebSocketDist.WebSocket.Listen.WebSocketHandler, %{ listen: listen, peername: peername, controlling_process: controlling_process },
+            []
+          )
       end
     end
 
     defmodule WebSocketHandler do
       @behaviour WebSock
 
-      def init({listen, peername}) do
+      def init(%{ listen: listen } = args) do
         Listen.accept(listen, self())
-        {:ok, %{ listen: listen, peername: peername }}
+        {:ok, args}
       end
 
       def handle_in({message, [opcode: :binary]}, %{ controlling_process: controlling_process } = state) do
@@ -218,6 +223,8 @@ defmodule WebSocketDist.WebSocket do
     :ok
   end
 
+  @spec recv({:client, any()} | {:server, any()}, any(), any()) ::
+          {:error, :timeout} | {:ok, any()}
   def recv({:server, _server}, _length, timeout) do
     receive do
       message ->

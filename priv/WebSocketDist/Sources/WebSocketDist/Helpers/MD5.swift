@@ -1,4 +1,5 @@
 // NOTE: Modified to remove uses of `Foundation.Data`
+// NOTE: Modified to be compatible with the embedded Swift runtime.
 
 // SwiftDigest | MD5Digest
 // Copyright (c) 2017, 2018 Nikolai Ruhe
@@ -48,7 +49,7 @@ public extension Sequence where Element == UInt8 {
 ///
 /// - Copyright: Copyright (c) 2017 Nikolai Ruhe.
 
-public struct MD5Digest : Hashable, RawRepresentable, LosslessStringConvertible, Codable {
+public struct MD5Digest : Hashable {
 
     private let _digest_0: UInt64
     private let _digest_1: UInt64
@@ -56,29 +57,6 @@ public struct MD5Digest : Hashable, RawRepresentable, LosslessStringConvertible,
     /// Perform hashing of the supplied data.
     public init(from input: [UInt8]) {
         (_digest_0, _digest_1) = MD5State(input).digest
-    }
-
-    /// Create a digest from reading a hex representation from the supplied string.
-    ///
-    /// The string _must_ consist of exactly 32 hex digits. Otherwise the initializer
-    /// returns `nil`.
-    public init?(rawValue: String) {
-        self.init(rawValue)
-    }
-
-    public init?(_ description: String) {
-        guard description.count == 32 else { return nil }
-        guard let high = UInt64(description.prefix(16), radix: 16) else { return nil }
-        guard let low  = UInt64(description.suffix(16), radix: 16) else { return nil }
-        (_digest_0, _digest_1) = (high.byteSwapped, low.byteSwapped)
-    }
-
-    public var rawValue: String { return self.description }
-
-    public var description: String {
-        return String(format: "%016lx%016lx",
-                      _digest_0.byteSwapped,
-                      _digest_1.byteSwapped)
     }
 
     public var bytes: [UInt8] {
