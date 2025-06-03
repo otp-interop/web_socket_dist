@@ -1,7 +1,4 @@
-# Start with:
-# `elixir --no-halt --erl "-proto_dist Elixir.TCPFilter -kernel inet_dist_listen_min 5000" server.exs`
-
-Mix.install([{:web_socket_dist, path: "../../../"}])
+Mix.install([{:web_socket_dist, github: "otp-interop/web_socket_dist"}])
 
 defmodule Counter do
   def start_link() do

@@ -3,16 +3,16 @@ import './App.css'
 
 import { Packer, Unpacker } from 'wetf'
 
-import { Node } from '../../package'
+import { Node } from '@otp-interop/web-socket-dist'
 
 function App() {
-  const nodeName = useMemo(() => `${crypto.randomUUID()}@127.0.0.1`)
-  const packer = useMemo(() => new Packer())
-  const unpacker = useMemo(() => new Unpacker())
+  const nodeName = useMemo(() => `${crypto.randomUUID()}@127.0.0.1`, [])
+  const packer = useMemo(() => new Packer(), [])
+  const unpacker = useMemo(() => new Unpacker(), [])
   
   const [count, setCount] = useState(0)
 
-  const node = useMemo(() => new Node(nodeName, "cookie"), [])
+  const node = useMemo(() => new Node(nodeName, "cookie"), [nodeName])
   const [connection, setConnection] = useState(undefined)
 
   const connect = async () => {
@@ -28,7 +28,7 @@ function App() {
     async function receiveLoop() {
       isReceiving.current = true
       try {
-        while (!!connection) {
+        while (connection) {
           const [, message] = await connection.receive()
           setCount(unpacker.unpack(message))
         }
@@ -54,7 +54,7 @@ function App() {
     <main className="flex flex-col gap-4 items-center">
       <h1>Web Socket Distribution Example</h1>
       {
-        !!connection
+        connection
         ? <>
           <p className="text-5xl">{count}</p>
           <div className="flex flex-row gap-2">
