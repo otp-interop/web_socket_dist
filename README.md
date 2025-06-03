@@ -31,3 +31,8 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/web_socket_dist>.
 
+## Example
+You can find a complete realtime counter sample in [`example/`](/example).
+
+https://github.com/user-attachments/assets/deaef5c4-1b62-47d3-8898-5af9b6cd96b4
+
