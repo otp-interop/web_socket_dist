@@ -1,5 +1,5 @@
 {
-  "originHash" : "ac64ee152ae0808b8c572f60eb3d940636b5e3fca4ffc141e9683d384ca22903",
+  "originHash" : "ce312237c7cff51f0a3fa7818eaeea10d54b82b6a63c9200b4aad3ec380914c6",
   "pins" : [
     {
       "identity" : "javascriptkit",
@@ -35,15 +35,6 @@
       "state" : {
         "revision" : "0687f71944021d616d34d922343dcef086855920",
         "version" : "600.0.1"
-      }
-    },
-    {
-      "identity" : "webapikit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftwasm/WebAPIKit.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "51d7fc7ba0a52761c01dc90dcf186fd2a8909b5b"
       }
     }
   ],

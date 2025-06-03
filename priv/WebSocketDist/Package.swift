@@ -7,7 +7,6 @@ let package = Package(
     name: "WebSocketDist",
     dependencies: [
         .package(url: "https://github.com/swiftwasm/JavaScriptKit.git", branch: "main"),
-        .package(url: "https://github.com/swiftwasm/WebAPIKit.git", branch: "main"),
         .package(url: "https://github.com/otp-interop/swift-external-term-format", branch: "main"),
         .package(url: "https://github.com/swiftwasm/swift-dlmalloc", branch: "0.1.0"),
     ],
