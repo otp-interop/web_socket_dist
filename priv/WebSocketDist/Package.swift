@@ -17,11 +17,9 @@ let package = Package(
         .executableTarget(
             name: "WebSocketDist",
             dependencies: [
-                // .product(name: "JavaScriptEventLoop", package: "JavaScriptKit"),
                 .product(name: "JavaScriptKit", package: "JavaScriptKit"),
-                // .product(name: "WebSockets", package: "WebAPIKit"),
 
-                .product(name: "ExternalTermFormat", package: "ExternalTermFormat"),
+                .product(name: "ExternalTermFormat", package: "swift-external-term-format"),
 
                 .product(name: "dlmalloc", package: "swift-dlmalloc"),
             ],

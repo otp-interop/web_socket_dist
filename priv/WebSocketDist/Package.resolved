@@ -1,5 +1,5 @@
 {
-  "originHash" : "81dc712777089ef2dc7a254bfc87080c55d75873ba93055ee950353973a13e05",
+  "originHash" : "ac64ee152ae0808b8c572f60eb3d940636b5e3fca4ffc141e9683d384ca22903",
   "pins" : [
     {
       "identity" : "javascriptkit",
@@ -17,6 +17,15 @@
       "state" : {
         "branch" : "0.1.0",
         "revision" : "0c3838252811e5cbda50c31f6f8a289b95207b17"
+      }
+    },
+    {
+      "identity" : "swift-external-term-format",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/otp-interop/swift-external-term-format",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b6045dab587fcd1f5289983b0f16dd2ebfc13f63"
       }
     },
     {
